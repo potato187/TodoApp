@@ -1,0 +1,28 @@
+@import './mixin';
+@import './vars';
+
+html{
+  font-size: 62.5%;
+}
+body{
+  font-family: Helvetica, Arial, sans-serif;
+  background: $color-body;
+  min-width: $min-width;
+  max-width: $max-width;
+  height: 100vh;
+  line-height: 1.4rem;
+  margin: 0 auto;
+}
+*, *:after, *:before{
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+:focus{
+  outline: none;
+}
+
+img{
+  display: block;
+  max-width: 100%;
+}

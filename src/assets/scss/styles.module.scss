@@ -1,0 +1,203 @@
+@import './vars';
+@import './mixin';
+
+button{
+  border: 0;
+  background: none;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+.todoapp{
+  margin: 13rem 0 4rem 0;
+  background-color: #FFF;
+  box-shadow: $box-shadow;
+}
+.todoapp .todoapp__header{
+  position: relative;
+}
+.todoapp__header h1{
+  font-size: 10rem;
+  color: $color-title;
+  font-weight: 100;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: -8rem;
+  text-rendering: optimizeLegibility;
+}
+.todoapp__header input::placeholder{
+  font-style: italic;
+  font-weight: 300;
+  color: $color-primary;
+}
+
+.todoapp__header .new_todo, .edit{
+  position: relative;
+  width: 100%;
+  line-height: 1.4;
+  font-size: 2.4rem;
+  border: 0;
+  padding: 1.6rem 1.6rem 1.6rem 6rem;
+}
+
+.todoapp__main {
+  position: relative;
+  border-top: 1px solid $color-primary;
+}
+
+.todoapp__main .toggle_all{  
+  position: absolute;
+  opacity: 0;
+}
+
+.todoapp__main .toggle_all + label{
+  width: 6rem;
+  height: 3.4rem;
+  position: absolute;
+  top: -2.5rem;
+  left: -1rem;
+  transform: rotate(90deg);
+}
+
+.todoapp__main .toggle_all + label:before{
+  content: '❯';
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: $color-primary;
+}
+
+.todoapp__main .toggle_all:checked + label:before{
+  color: $color-checked; 
+}
+
+.todoapp__list{
+  list-style-type: none;
+}
+
+.todoapp__list li{
+  position: relative;
+  font-size: 2.4rem;
+  border-bottom: 1px solid $color-border;
+  padding: 0.3rem;
+}
+
+.todoapp__list:last-child{
+  border-bottom: none;
+}
+
+.todoapp__list li .toggle{
+  text-align: center;
+  width: 4rem;
+  height: 4rem;
+  position: absolute;
+  top: 2rem;
+  left: 1rem;
+  bottom: 0;
+  margin: 0 auto;
+  opacity: 0;
+}
+
+.todoapp__list li .toggle + label{
+  background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E');
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+
+.todoapp__list li .toggle:checked + label {
+	background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E');
+}
+
+.todoapp__list li label{
+  word-break: break-all;
+  padding: 1.5rem 1.5rem 1.5rem 6rem;
+  display: block;
+  line-height: 1.2;
+}
+.todoapp__list li.completed label{
+  color: $color-completed;
+	text-decoration: line-through;
+}
+.todoapp__list li .destroy{
+  display: none;
+  position: absolute;
+  top: 1.5rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto;
+  font-size: 3rem;
+  color: $color-destroy;
+  transition: color 0.2s ease-out;
+}
+
+.todoapp__list li .destroy:after{
+  content: '×';
+}
+
+.todoapp__list li .destroy:hover{
+  color: $color-destroy-hover;
+}
+
+.todoapp__list li:hover .destroy{
+  display: block;
+}
+.todoapp__list li .edit{
+  display: none;
+}
+.todoapp__list li.editing {
+	border-bottom: none;
+	padding: 0;
+}
+
+.todoapp__list li.editing .view{
+  display: none;
+}
+
+.todoapp__list li.editing .edit{
+  display: block;
+  width: 48.5rem;
+  height: 6.5;
+  padding: 1.5rem 1.5rem;
+  margin-left: 6.4rem;
+  border: 1px solid #999;
+  box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.todoapp__list li.editing:last-child{
+  margin-bottom: -1px;
+}
+
+.footer {
+	color: $color-footer;
+	padding: 1rem 2rem;
+	height: 3rem;
+	text-align: center;
+  border-top: 1px solid $color-border;
+  @include flex(center, space-between);
+  font-size: 1.3rem;
+}
+
+.filter{
+  @include flex();
+}
+.filter li{
+  margin-right: 2rem;
+}
+.filter li button {
+  font-size: 1.3rem;
+  color: #4d4d4d;
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
+.filter li button:hover {  
+  text-decoration: underline;
+}
+
+.filter li button.selected {  
+  text-decoration: underline;
+}
+.todo_count strong {
+	font-weight: 300;
+}
